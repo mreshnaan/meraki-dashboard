@@ -26,7 +26,12 @@ const EventForm = ({ active, refetch, record, handler, close }) => {
     const formattedDate = moment(values.eventDate, "YYYY-MM-DD").format(
       "MMMM Do YYYY"
     );
-    await handler({ ...values, eventDate: formattedDate }, refetch, close, jwtToken);
+    await handler(
+      { ...values, eventDate: formattedDate },
+      refetch,
+      close,
+      jwtToken
+    );
   };
 
   const initialValues = {
@@ -105,7 +110,12 @@ const EventForm = ({ active, refetch, record, handler, close }) => {
 
         {!isView && (
           <Box display="flex" justifyContent="end" mt={4}>
-            <Button type="primary" htmltype="submit">
+            <Button
+              type="primary"
+              htmltype="submit"
+              bg={"teal.400"}
+              _hover={{ bg: "teal.500" }}
+            >
               Submit
             </Button>
           </Box>

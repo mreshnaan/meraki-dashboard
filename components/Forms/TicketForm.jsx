@@ -187,7 +187,12 @@ function TicketForm({ active, refetch, record, handler, close }) {
 
         {!isView && (
           <Box display="flex" justifyContent="end" mt={4}>
-            <Button type="primary" htmltype="submit">
+            <Button
+              type="primary"
+              htmltype="submit"
+              bg={"teal.400"}
+              _hover={{ bg: "teal.500" }}
+            >
               Submit
             </Button>
           </Box>
