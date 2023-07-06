@@ -1,0 +1,10 @@
+MONGO_URI=mongodb+srv://meraki:admin123654@merakimongoinstance.v6u2uuw.mongodb.net/?retryWrites=true&w=majority
+ENVIROMENT=dev
+JWT_SECRET=alskdjalsdh8qwdhqkj891237jkansd
+SENDGRID_API_KEY=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
+DOMAIN=http://localhost:3000
+
+
+
+
+Create a file called .env.local
