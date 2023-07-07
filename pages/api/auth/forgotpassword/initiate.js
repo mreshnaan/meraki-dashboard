@@ -2,9 +2,9 @@
 import { v4 } from 'uuid'
 import UserModel from '../../../../models/UserModel'
 import _ from 'lodash'
-import { connectMongo } from '@/utils/connectMongo'
+import { connectMongo } from '../../../../utils/connectMongo'
 
-import { sendEmail } from '@/utils/email'
+import { sendEmail } from '../../../../utils/email'
 
 const requestMethod = "POST";
 
