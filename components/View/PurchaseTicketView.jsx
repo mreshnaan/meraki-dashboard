@@ -117,15 +117,15 @@ function PurchaseTicketView() {
               textAlign="center"
             >
               <h4>Ticket ID: {ticket._id}</h4>
-              <p>Ticket Owner: {ticket.ticketOwner.fullName}</p>
-              <p>Email: {ticket.ticketOwner.email}</p>
+              <p>Ticket Owner: {ticket.ticketOwner?.fullName}</p>
+              <p>Email: {ticket.ticketOwner?.email}</p>
               <Form
                 onFinish={(values) => handleSubmit(ticket._id, values)}
                 initialValues={
                   ticket.ticketHolder
                     ? {
-                        fullName: ticket.ticketHolder.fullName,
-                        email: ticket.ticketHolder.email,
+                        fullName: ticket.ticketHolder?.fullName,
+                        email: ticket.ticketHolder?.email,
                         mobile: ticket.ticketHolder?.mobile,
                       }
                     : null

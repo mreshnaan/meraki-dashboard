@@ -53,8 +53,8 @@ function MyLinks() {
     {
       title: "Links",
       type: "link",
-      dataIndex: "group",
-      key: "group",
+      dataIndex: "secret",
+      key: "secret",
     },
   ];
 
