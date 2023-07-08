@@ -16,6 +16,7 @@ import {
   Flex,
   useDisclosure,
   IconButton,
+  Link,
 } from "@chakra-ui/react";
 import Card from "../../components/Card/Card";
 import CardBody from "../../components/Card/CardBody";
@@ -28,6 +29,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Space } from "antd";
 import CustomeModal from "../Modal/CustomeModal";
 import { getNestedValue, getValue } from "../../helper";
+import { MdContentCopy } from "react-icons/md";
+import { toast } from "react-hot-toast";
 
 const DataTable = ({
   title,
@@ -198,6 +201,42 @@ const DataTable = ({
       ),
     });
   }
+
+  const renderColumnData = (index, item, column) => {
+    const dataIndex = column.dataIndex;
+    const nestedValue = getNestedValue(item, dataIndex);
+
+    if (column.render) {
+      return column.render(index, item);
+    }
+
+    if (column.type === "link") {
+      const link = `${process.env.DOMAIN}/purchase/tickets/${nestedValue}`;
+      return (
+        <Button
+          rightIcon={<MdContentCopy />}
+          onClick={() => {
+            navigator.clipboard.writeText(link);
+            toast.success("Link copied to clipboard!");
+          }}
+        >
+          Copy the Link
+        </Button>
+        // <Link
+        //   as={"a"}
+        //   href={`/purchase/tickets/${nestedValue}`}
+        //   color="teal.100"
+        //   target="_blank"
+        //   rel="noopener noreferrer"
+        // >
+        //   Click here
+        // </Link>
+      );
+    }
+
+    return getValue(item, column);
+  };
+
   //get only the action
   const createAction = actionConfig.find(
     (config) => config.action === "Create"
@@ -397,9 +436,7 @@ const DataTable = ({
                       color={textColor}
                       transition="all 0.3s ease"
                     >
-                      {column.render
-                        ? column.render(index, item)
-                        : getValue(item, column)}
+                      {renderColumnData(index, item, column)}
                     </Td>
                   ))}
                 </Tr>

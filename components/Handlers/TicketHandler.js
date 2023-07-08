@@ -1,4 +1,6 @@
 import { toast } from "react-hot-toast";
+import { MdContentCopy } from "react-icons/md";
+import { Flex } from "@chakra-ui/react";
 
 export const handleTicketCreate = async (values, refetch, close, jwt) => {
   console.log(values);
@@ -19,8 +21,22 @@ export const handleTicketCreate = async (values, refetch, close, jwt) => {
       }),
     });
     if (response.ok) {
-      // const data = await response.json();
-      toast.success("Successfully Created");
+      const { data } = await response.json();
+      const link = `${process.env.DOMAIN}/purchase/tickets/${data.link}`;
+      toast.success(
+        <Flex justifyContent={"center"} alignItems={"center"}>
+          <div>Purchase successful! Click the button to copy the link:</div>
+          <button
+            onClick={() => {
+              navigator.clipboard.writeText(link);
+              toast.success("Link copied to clipboard!");
+            }}
+          >
+            <MdContentCopy />
+          </button>
+        </Flex>
+      );
+
       refetch();
     } else {
       const error = await response.json();

@@ -12,6 +12,7 @@ function MyLinks() {
 
   const heading = "My Links ";
   const fetchDataURL = "/api/tickets/mylinks";
+  const filterOptions = ["event.name", "ticketType.name"];
   //   const filterOptions = ["name", "event.name", "price"];
   // useEffect(() => {
   //   setIsLoadingToken(true);
@@ -43,10 +44,17 @@ function MyLinks() {
       dataIndex: ["event", "name"],
       key: "event.name",
     },
+
     {
       title: "Type",
       dataIndex: ["ticketType", "name"],
       key: "ticketType.name",
+    },
+    {
+      title: "Links",
+      type: "link",
+      dataIndex: "group",
+      key: "group",
     },
   ];
 
@@ -57,6 +65,7 @@ function MyLinks() {
           isFilter={true}
           title={heading}
           loading={isLoading}
+          filterOptions={filterOptions}
           data={data}
           columnFields={columns}
           refetch={refetch}

@@ -17,7 +17,7 @@ function MyTicketsView() {
   const jwt = useContext(JwtContext);
   const heading = "My Tickets ";
   const fetchDataURL = "/api/tickets/viewmytickets";
-  const filterOptions = ["name", "event.name", "price"];
+  const filterOptions = ["event.name", "ticketType.name"];
 
   const textColor = useColorModeValue("black", "white");
 
@@ -62,11 +62,6 @@ function MyTicketsView() {
       key: "_id",
     },
     {
-      title: "Seller",
-      dataIndex: ["seller", "fullName"],
-      key: "seller.fullName",
-    },
-    {
       title: "Event",
       dataIndex: ["event", "name"],
       key: "event.name",
@@ -77,6 +72,11 @@ function MyTicketsView() {
       key: "ticketType.name",
     },
     {
+      title: "Price",
+      dataIndex: ["ticketType", "price"],
+      key: "ticketType.price",
+    },
+    {
       title: "Ticket Owner",
       dataIndex: ["ticketOwner", "fullName"],
       key: "ticketOwner.fullName",
@@ -85,6 +85,12 @@ function MyTicketsView() {
       title: "ticketHolder",
       dataIndex: ["ticketHolder", "fullName"],
       key: "ticketHolder.fullName",
+    },
+    {
+      title: "Links",
+      type: "link",
+      dataIndex: "group",
+      key: "group",
     },
   ];
 
