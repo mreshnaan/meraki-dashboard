@@ -211,7 +211,7 @@ const DataTable = ({
     }
 
     if (column.type === "link") {
-      const link = `${process.env.DOMAIN}/purchase/tickets/${nestedValue}`;
+      const link = `${process.env.NEXT_PUBLIC_DOMAIN}/purchase/tickets/${nestedValue}`;
       return (
         <Button
           rightIcon={<MdContentCopy />}

@@ -22,7 +22,7 @@ export const handleTicketCreate = async (values, refetch, close, jwt) => {
     });
     if (response.ok) {
       const { data } = await response.json();
-      const link = `${process.env.DOMAIN}/purchase/tickets/${data.link}`;
+      const link = `${process.env.NEXT_PUBLIC_DOMAIN}/purchase/tickets/${data.link}`;
       toast.success(
         <Flex justifyContent={"center"} alignItems={"center"}>
           <div>Purchase successful! Click the button to copy the link:</div>

@@ -2,7 +2,7 @@ MONGO_URI=mongodb+srv://meraki:admin123654@merakimongoinstance.v6u2uuw.mongodb.n
 ENVIROMENT=dev
 JWT_SECRET=alskdjalsdh8qwdhqkj891237jkansd
 SENDGRID_API_KEY=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
-DOMAIN=http://localhost:3000
+NEXT_PUBLIC_DOMAIN=http://localhost:3000
 
 
 

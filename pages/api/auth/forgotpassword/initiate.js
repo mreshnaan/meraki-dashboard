@@ -37,7 +37,7 @@ export default async  function handler(req, res) {
       "RESET PASSWORD",
       "Please click the button below to reset your password",
       "RESET PASSWORD",
-      `${process.env.DOMAIN}/account/reset-password/${passwordResetToken}`
+      `${process.env.NEXT_PUBLIC_DOMAIN}/account/reset-password/${passwordResetToken}`
     );
 
     return res

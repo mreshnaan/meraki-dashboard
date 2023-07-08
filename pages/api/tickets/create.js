@@ -50,7 +50,7 @@ export default async function handler(req, res) {
       status: true,
       message: "Tickets Created",
       data: createdTickets,
-      link: `${process.env.DOMAIN}/purchase/tickets/${ticketGroupSecret}`,
+      link: `${process.env.NEXT_PUBLIC_DOMAIN}/purchase/tickets/${ticketGroupSecret}`,
     });
   } catch (error) {
     console.log(error);
