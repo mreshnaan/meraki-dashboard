@@ -60,4 +60,5 @@ export const handleEventUpdate = async (values, refetch, close, jwt) => {
 
 export const handleEventDelete = async (values, refetch, close, jwt) => {
   console.log(values);
+  close();
 };

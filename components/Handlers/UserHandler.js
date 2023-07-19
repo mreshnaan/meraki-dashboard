@@ -37,4 +37,5 @@ export const handleUserUpdate = async (values, refetch, close, jwt) => {
 
 export const handleUserDelete = async (values, refetch, close, jwt) => {
   console.log(values);
+  close();
 };

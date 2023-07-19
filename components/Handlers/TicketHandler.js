@@ -81,4 +81,5 @@ export const handleTicketUpdate = async (values, refetch, close, jwt) => {
 
 export const handleTicketDelete = async (values, refetch, close, jwt) => {
   console.log(values);
+  close();
 };
