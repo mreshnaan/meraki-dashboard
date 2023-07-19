@@ -4,6 +4,8 @@ import { FaEye, FaEdit, FaTrashAlt, FaPlus } from "react-icons/fa";
 import { useColorModeValue } from "@chakra-ui/react";
 import TicketForm from "../Forms/TicketForm";
 import useGetQuery from "../Hooks/useGetQuery";
+import DeleteForm from "../Forms/DeleteForm";
+
 
 import {
   handleTicketCreate,
@@ -47,7 +49,7 @@ function TicketView() {
       action: "Delete",
       icon: <FaTrashAlt color={textColor} />,
       type: "ghost",
-      component: TicketForm,
+      component: DeleteForm,
       handler: handleTicketDelete,
     },
   ];

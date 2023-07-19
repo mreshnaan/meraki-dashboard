@@ -3,6 +3,8 @@ import DataTable from "../Table/DataTable";
 import { FaEye, FaEdit, FaTrashAlt, FaPlus } from "react-icons/fa";
 import { Spinner, useColorModeValue } from "@chakra-ui/react";
 import UserForm from "../Forms/UserForm";
+import DeleteForm from "../Forms/DeleteForm";
+
 
 import {
   handleUserCreate,
@@ -59,7 +61,7 @@ function TicketTypesView() {
       action: "Delete",
       icon: <FaTrashAlt color={textColor} />,
       type: "ghost",
-      component: UserForm,
+      component: DeleteForm,
       handler: handleUserDelete,
     },
   ];

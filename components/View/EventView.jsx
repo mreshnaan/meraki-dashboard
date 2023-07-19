@@ -3,6 +3,7 @@ import DataTable from "../Table/DataTable";
 import { FaEye, FaEdit, FaTrashAlt, FaPlus, FaSyncAlt } from "react-icons/fa";
 import { useColorModeValue } from "@chakra-ui/react";
 import EventForm from "../Forms/EventForm";
+import DeleteForm from "../Forms/DeleteForm";
 import useGetQuery from "../Hooks/useGetQuery";
 
 import {
@@ -47,7 +48,7 @@ function EventView() {
       action: "Delete",
       icon: <FaTrashAlt color={textColor} />,
       type: "ghost",
-      component: EventForm,
+      component: DeleteForm,
       handler: handleEventDelete,
     },
   ];

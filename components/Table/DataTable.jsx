@@ -258,7 +258,7 @@ const DataTable = ({
         >
           {ModalComponent && (
             <ModalComponent
-              active={active?.action}
+            modal={active?.action}
               record={active?.selectrecord}
               handler={active?.handler}
               close={onClose}

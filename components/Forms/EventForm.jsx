@@ -13,6 +13,7 @@ import { useContext } from "react";
 import { JwtContext } from "../Contexts/authContext";
 
 const EventForm = ({ modal, refetch, record, handler, close }) => {
+  console.log(modal)
   const textColor = useColorModeValue("gray", "white");
 
   const isView = modal.toLowerCase() === "view";
