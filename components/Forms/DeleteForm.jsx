@@ -1,7 +1,10 @@
 import { Button } from "antd";
 import React from "react";
+import { JwtContext } from "../../components/Contexts/authContext";
 
 function DeleteForm({ refetch, record, handler, close }) {
+  const jwtToken = useContext(JwtContext);
+
   const handleDelete = async () => {
     await handler(record, refetch, close, jwtToken);
   };
