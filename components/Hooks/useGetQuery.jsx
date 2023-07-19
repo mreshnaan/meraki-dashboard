@@ -49,6 +49,13 @@ const useGetQuery = (url, jwt) => {
         toast.dismiss(toastId);
       };
     } else if (data) {
+      console.log(data);
+      if (data.error) {
+        const toastId = toast.error(data.error);
+        return () => {
+          toast.dismiss(toastId);
+        };
+      }
       const toastId = toast.success("Data fetched successfully");
       return () => {
         toast.dismiss(toastId);

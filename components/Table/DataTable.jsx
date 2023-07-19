@@ -139,12 +139,6 @@ const DataTable = ({
 
     setCurrentPage(1);
 
-    // if (!Array.isArray(data)) {
-    //   // If data is not an array, assume it's the data2 structure
-    //   const keys = Object.keys(filteredData);
-    //   return keys.flatMap((key) => filteredData[key]);
-    // }
-
     return filteredData;
   }, [data, filterValues, searchValue]);
 
