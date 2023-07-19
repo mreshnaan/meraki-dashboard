@@ -3,7 +3,6 @@ import DataTable from "../Table/DataTable";
 import { FaEye, FaEdit, FaTrashAlt, FaPlus } from "react-icons/fa";
 import { Spinner, useColorModeValue } from "@chakra-ui/react";
 import UserForm from "../Forms/UserForm";
-import useGetQuery from "../Hooks/useGetQuery";
 
 import {
   handleUserCreate,
@@ -23,17 +22,17 @@ function TicketTypesView() {
 
   const textColor = useColorModeValue("black", "white");
 
+  //wait till get the jwt token in local storage
   useEffect(() => {
     setIsLoadingToken(true);
     if (jwt) {
-      console.log(jwt);
       setIsLoadingToken(false);
     }
   }, [jwt]);
 
   const { data, isLoading, refetch } = useGetQueryWithJwt(fetchDataURL, jwt);
 
-  const actionConfig = [
+  const modalConfig = [
     {
       title: "Add Type",
       action: "Create",
@@ -95,20 +94,16 @@ function TicketTypesView() {
 
   return (
     <>
-      {isLoadingToken ? (
-        <Spinner size="xl" />
-      ) : (
-        <DataTable
-          isFilter={true}
-          filterOptions={filterOptions}
-          title={heading}
-          loading={isLoading ? isLoading : isLoadingToken}
-          data={data}
-          columnFields={columns}
-          actionConfig={actionConfig}
-          refetch={refetch}
-        />
-      )}
+      <DataTable
+        isFilter={true}
+        filterOptions={filterOptions}
+        title={heading}
+        loading={isLoading || isLoadingToken ? isLoading : isLoadingToken}
+        data={data}
+        columnFields={columns}
+        modalConfig={modalConfig}
+        refetch={refetch}
+      />
     </>
   );
 }

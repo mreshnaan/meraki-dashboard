@@ -2,7 +2,6 @@ import {
   Box,
   Grid,
   GridItem,
-  FormLabel,
   Button,
   useColorModeValue,
 } from "@chakra-ui/react";
@@ -13,11 +12,11 @@ import DatePicker from "../Fields/DatePicker";
 import { useContext } from "react";
 import { JwtContext } from "../Contexts/authContext";
 
-const EventForm = ({ active, refetch, record, handler, close }) => {
+const EventForm = ({ modal, refetch, record, handler, close }) => {
   const textColor = useColorModeValue("gray", "white");
 
-  const isView = active.toLowerCase() === "view";
-  const isUpdate = active.toLowerCase() === "update";
+  const isView = modal.toLowerCase() === "view";
+  const isUpdate = modal.toLowerCase() === "update";
 
   const jwt = useContext(JwtContext);
   const jwtToken = !isView && jwt;

@@ -17,15 +17,21 @@ import {
 } from "../Data/Fetch";
 import { JwtContext } from "../../components/Contexts/authContext";
 
-function TicketForm({ active, refetch, record, handler, close }) {
+function TicketForm({ modal, refetch, record, handler, close }) {
   const jwtToken = useContext(JwtContext);
 
-  const isView = active.toLowerCase() === "view";
-  const isUpdate = active.toLowerCase() === "update";
+  const isView = modal.toLowerCase() === "view";
+  const isUpdate = modal.toLowerCase() === "update";
 
   const [eventOptions, setEventOptions] = useState([]);
   const [ticketOptions, setTicketOptions] = useState([]);
   const [sellerOptions, setSellerOptions] = useState([]);
+  //useState for the select options
+  // const [options, setOptions] = useState({
+  //   events: [],
+  //   ticketTypes: [],
+  //   sellers: [],
+  // });
 
   const [eventDetails, setEventDetails] = useState(null);
   const [ticketDetails, setTicketDetails] = useState(null);
@@ -41,12 +47,16 @@ function TicketForm({ active, refetch, record, handler, close }) {
   }, []);
   //check eventDetails is change
   useEffect(() => {
+    let isMounted = true;
     if (prevEventDetailsRef.current !== eventDetails) {
       prevEventDetailsRef.current = eventDetails;
       if (eventDetails) {
         fetchTicketOptions(eventDetails, setTicketOptions);
       }
     }
+    return () => {
+      isMounted = false;
+    };
   }, [eventDetails]);
 
   const onFinish = async (values) => {

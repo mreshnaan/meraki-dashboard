@@ -5,9 +5,11 @@ import TicketTypeView from "../../components/View/TicketTypeView";
 import MyTicketsView from "../../components/View/MyTicketsView";
 import MyLinks from "../../components/View/MyLinks";
 import CustomTab from "../../components/CustomTab";
+import { useMemo } from "react";
 
 export default function Tickets() {
-  const tabs = [
+
+  const tabs = useMemo(() => [
     {
       title: "Tickets",
       view: <TicketView />,
@@ -24,7 +26,8 @@ export default function Tickets() {
       title: "My Links",
       view: <MyLinks />,
     },
-  ];
+  ], []);
+  
   return (
     <>
       <Layout>

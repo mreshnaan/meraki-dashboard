@@ -1,8 +1,6 @@
 import { Tabs, TabList, TabPanels, Tab, TabPanel } from "@chakra-ui/react";
 
-
-
-function CustomTab({tabs}) {
+function CustomTab({ tabs }) {
   return (
     <Tabs variant="unstyled" size="sm" isLazy>
       <TabList
@@ -40,7 +38,9 @@ function CustomTab({tabs}) {
 
       <TabPanels>
         {tabs.map((tab, index) => (
-          <TabPanel pl={"0px"} key={index}>{tab.view}</TabPanel>
+          <TabPanel pl={"0px"} key={tab.title + index}>
+            {tab.view}
+          </TabPanel>
         ))}
       </TabPanels>
     </Tabs>

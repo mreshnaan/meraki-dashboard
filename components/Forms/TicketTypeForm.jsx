@@ -13,11 +13,11 @@ import { fetchEventData } from "../Data/Fetch";
 import CustomAutoComplete from "../Fields/CustomAutoComplete";
 import { JwtContext } from "../Contexts/authContext";
 
-function TicketTypeForm({ active, refetch, record, handler, close }) {
+function TicketTypeForm({ modal, refetch, record, handler, close }) {
   const textColor = useColorModeValue("gray", "white");
 
-  const isView = active.toLowerCase() === "view";
-  const isUpdate = active.toLowerCase() === "update";
+  const isView = modal.toLowerCase() === "view";
+  const isUpdate = modal.toLowerCase() === "update";
 
   const jwt = useContext(JwtContext);
   const jwtToken = !isView && jwt;

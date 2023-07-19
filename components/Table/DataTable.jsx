@@ -38,7 +38,7 @@ const DataTable = ({
   filterOptions,
   loading,
   columnFields,
-  actionConfig = [],
+  modalConfig = [],
   refetch,
 }) => {
   const textColor = useColorModeValue("gray.700", "white");
@@ -176,8 +176,8 @@ const DataTable = ({
 
   const columns = [...columnFields];
 
-  if (actionConfig && actionConfig.length > 0) {
-    const filteredActions = actionConfig.filter(
+  if (modalConfig && modalConfig.length > 0) {
+    const filteredActions = modalConfig.filter(
       (config) => config.action !== "Create"
     );
 
@@ -238,11 +238,11 @@ const DataTable = ({
   };
 
   //get only the action
-  const createAction = actionConfig.find(
+  const createAction = modalConfig.find(
     (config) => config.action === "Create"
   );
   //get the Current Modal by action
-  const ModalComponent = actionConfig.find(
+  const ModalComponent = modalConfig.find(
     (config) => config.action === active?.action
   )?.component;
 

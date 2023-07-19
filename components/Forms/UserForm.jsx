@@ -13,11 +13,11 @@ import { useEffect, useState } from "react";
 import { fetchEventData } from "../Data/Fetch";
 import CustomAutoComplete from "../Fields/CustomAutoComplete";
 
-function UserForm({ active, refetch, record, handler, close }) {
+function UserForm({ modal, refetch, record, handler, close }) {
   const textColor = useColorModeValue("gray", "white");
 
-  const isView = active.toLowerCase() === "view";
-  const isUpdate = active.toLowerCase() === "update";
+  const isView = modal.toLowerCase() === "view";
+  const isUpdate = modal.toLowerCase() === "update";
 
   const jwt = useContext(JwtContext);
   const jwtToken = !isView && jwt;

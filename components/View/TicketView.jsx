@@ -20,7 +20,7 @@ function TicketView() {
 
   const { data, isLoading, refetch } = useGetQuery(fetchDataURL);
 
-  const actionConfig = [
+  const modalConfig = [
     {
       title: "Add Ticket",
       action: "Create",
@@ -99,7 +99,7 @@ function TicketView() {
         loading={isLoading}
         data={data}
         columnFields={columns}
-        actionConfig={actionConfig}
+        modalConfig={modalConfig}
         refetch={refetch}
       />
     </>

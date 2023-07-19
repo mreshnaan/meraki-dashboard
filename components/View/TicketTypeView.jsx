@@ -20,7 +20,7 @@ function TicketTypesView() {
 
   const { data, isLoading, refetch } = useGetQuery(fetchDataURL);
 
-  const actionConfig = [
+  const modalConfig = [
     {
       title: "Add Type",
       action: "Create",
@@ -84,7 +84,7 @@ function TicketTypesView() {
         loading={isLoading}
         data={data}
         columnFields={columns}
-        actionConfig={actionConfig}
+        modalConfig={modalConfig}
         refetch={refetch}
       />
     </>

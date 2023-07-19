@@ -23,38 +23,6 @@ function MyTicketsView() {
 
   const { data, isLoading, refetch } = useGetQuery(fetchDataURL, jwt && jwt);
 
-  // const actionConfig = [
-  //   {
-  //     title: "Add Type",
-  //     action: "Create",
-  //     icon: <FaPlus color={textColor} />,
-  //     type: "ghost",
-  //     component: TicketTypeForm,
-  //     handler: handleTicketTypeCreate,
-  //   },
-  //   {
-  //     action: "View",
-  //     icon: <FaEye color={textColor} />,
-  //     type: "ghost",
-  //     component: TicketTypeForm,
-  //     // handler: handleMyTicketsView
-  //   },
-  //   {
-  //     action: "Update",
-  //     icon: <FaEdit color={textColor} />,
-  //     type: "ghost",
-  //     component: TicketTypeForm,
-  //     handler: handleTicketTypeUpdate,
-  //   },
-  //   {
-  //     action: "Delete",
-  //     icon: <FaTrashAlt color={textColor} />,
-  //     type: "ghost",
-  //     component: TicketTypeForm,
-  //     handler: handleTicketTypeDelete,
-  //   },
-  // ];
-
   const columns = [
     {
       title: "ID",

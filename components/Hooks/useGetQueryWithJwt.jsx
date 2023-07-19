@@ -31,9 +31,15 @@ const useGetQueryWithJwt = (url, jwt) => {
         toast.dismiss(toastId);
       };
     } else if (isError) {
-      toast.error("Failed to fetch data");
+      const toastId = toast.error("Failed to fetch data");
+      return () => {
+        toast.dismiss(toastId);
+      };
     } else if (data) {
-      toast.success("Data fetched successfully");
+      const toastId = toast.success("Data fetched successfully");
+      return () => {
+        toast.dismiss(toastId);
+      };
     }
   }, [isLoading, isError, data]);
 

@@ -8,25 +8,12 @@ import useGetQueryWithJwt from "../Hooks/useGetQueryWithJwt";
 
 function MyLinks() {
   const jwt = useContext(JwtContext);
-  console.log("links : ", jwt);
 
   const heading = "My Links ";
   const fetchDataURL = "/api/tickets/mylinks";
   const filterOptions = ["event.name", "ticketType.name"];
-  //   const filterOptions = ["name", "event.name", "price"];
-  // useEffect(() => {
-  //   setIsLoadingToken(true);
-  //   if (jwt) {
-  //     console.log(jwt);
-  //     setIsLoadingToken(false);
-  //   }
-  // }, [jwt]);
-
-  // const { data, isLoading, refetch } = useGetQueryWithJwt(fetchDataURL, jwt);
 
   const { data, isLoading, refetch } = useGetQuery(fetchDataURL, jwt && jwt);
-
-  console.log("links : ", data);
 
   const columns = [
     {

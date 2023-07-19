@@ -20,7 +20,7 @@ function EventView() {
 
   const { data, isLoading, refetch } = useGetQuery(fetchDataURL);
 
-  const actionConfig = [
+  const modalConfig = [
     {
       title: "Add Event",
       action: "Create",
@@ -85,7 +85,7 @@ function EventView() {
         loading={isLoading}
         data={data}
         columnFields={columns}
-        actionConfig={actionConfig}
+        modalConfig={modalConfig}
         refetch={refetch}
       />
     </>
