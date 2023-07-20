@@ -3,9 +3,9 @@ import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 
 const useGetQueryWithJwt = (url, jwt) => {
-  const { isLoading, isError, data, error, refetch } = useQuery({
-    queryKey: ["data"],
-    queryFn: async () => {
+  const { isLoading, isError, data, error, refetch } = useQuery(
+    ["data", url, jwt],
+    async () => {
       try {
         const response = await fetch(url, {
           method: "GET",
@@ -21,8 +21,10 @@ const useGetQueryWithJwt = (url, jwt) => {
         throw new Error("Failed to fetch data");
       }
     },
-    enabled: !!jwt, // Enable the query only if jwtToken is available
-  });
+    {
+      enabled: !!jwt, // Enable the query only if jwtToken is available
+    }
+  );
 
   useEffect(() => {
     if (isLoading) {
@@ -41,7 +43,7 @@ const useGetQueryWithJwt = (url, jwt) => {
         toast.dismiss(toastId);
       };
     }
-  }, [isLoading, isError, data]);
+  }, [isLoading, isError]);
 
   return { isLoading, isError, data, error, refetch };
 };

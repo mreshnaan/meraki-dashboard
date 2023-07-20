@@ -2,22 +2,16 @@ import React, { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 
-const useGetQuery = (url, jwt) => {
+const useGetQuery = (url) => {
   const { isLoading, isError, data, error, refetch } = useQuery(
-    ["data", url, jwt],
+    ["data", url],
     async () => {
       try {
-        const headers = {
-          "Content-Type": "application/json",
-        };
-
-        if (jwt) {
-          headers.Authorization = `Bearer ${jwt}`;
-        }
-
         const response = await fetch(url, {
           method: "GET",
-          headers: headers,
+          headers: {
+            "Content-Type": "application/json",
+          },
         });
 
         if (!response.ok) {
@@ -49,7 +43,6 @@ const useGetQuery = (url, jwt) => {
         toast.dismiss(toastId);
       };
     } else if (data) {
-      console.log(data);
       if (data.error) {
         const toastId = toast.error(data.error);
         return () => {
@@ -61,7 +54,7 @@ const useGetQuery = (url, jwt) => {
         toast.dismiss(toastId);
       };
     }
-  }, [isLoading, isError, data]);
+  }, [isLoading, isError]);
 
   return { isLoading, isError, data, error, refetch };
 };

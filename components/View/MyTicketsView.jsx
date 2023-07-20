@@ -4,7 +4,7 @@ import DataTable from "../Table/DataTable";
 import { FaEye, FaEdit, FaTrashAlt, FaPlus } from "react-icons/fa";
 import { useColorModeValue } from "@chakra-ui/react";
 import TicketTypeForm from "../Forms/TicketTypeForm";
-import useGetQuery from "../Hooks/useGetQuery";
+import useGetQueryWithJwt from "../Hooks/useGetQueryWithJwt";
 
 import {
   handleTicketTypeCreate,
@@ -12,6 +12,8 @@ import {
   handleTicketTypeUpdate,
 } from "../Handlers/TicketTypeHandler";
 import { JwtContext } from "../Contexts/authContext";
+import { Button } from "antd";
+import { MdContentCopy } from "react-icons/md";
 
 function MyTicketsView() {
   const jwt = useContext(JwtContext);
@@ -21,7 +23,7 @@ function MyTicketsView() {
 
   const textColor = useColorModeValue("black", "white");
 
-  const { data, isLoading, refetch } = useGetQuery(fetchDataURL, jwt && jwt);
+  const { data, isLoading, refetch } = useGetQueryWithJwt(fetchDataURL, jwt);
 
   const columns = [
     {
@@ -56,25 +58,37 @@ function MyTicketsView() {
     },
     {
       title: "Links",
-      type: "link",
-      dataIndex: "secret",
       key: "secret",
+      dataIndex: "secret",
+      render: (_, { secret }) => {
+        const link = `${process.env.NEXT_PUBLIC_DOMAIN}/purchase/tickets/${secret}`;
+        return (
+          <Button
+            ghost
+            icon={<MdContentCopy />}
+            onClick={() => {
+              navigator.clipboard.writeText(link);
+              toast.success("Link copied to clipboard!");
+            }}
+          >
+            Copy the Link
+          </Button>
+        );
+      },
     },
   ];
 
   return (
     <>
-      {data && jwt && (
-        <DataTable
-          isFilter={true}
-          filterOptions={filterOptions}
-          title={heading}
-          loading={isLoading}
-          data={data}
-          columnFields={columns}
-          refetch={refetch}
-        />
-      )}
+      <DataTable
+        isFilter={true}
+        filterOptions={filterOptions}
+        title={heading}
+        loading={isLoading}
+        data={data}
+        columnFields={columns}
+        refetch={refetch}
+      />
     </>
   );
 }

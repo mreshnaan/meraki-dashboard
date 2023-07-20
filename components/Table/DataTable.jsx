@@ -204,29 +204,29 @@ const DataTable = ({
       return column.render(index, item);
     }
 
-    if (column.type === "link") {
-      const link = `${process.env.NEXT_PUBLIC_DOMAIN}/purchase/tickets/${nestedValue}`;
-      return (
-        <Button
-          rightIcon={<MdContentCopy />}
-          onClick={() => {
-            navigator.clipboard.writeText(link);
-            toast.success("Link copied to clipboard!");
-          }}
-        >
-          Copy the Link
-        </Button>
-        // <Link
-        //   as={"a"}
-        //   href={`/purchase/tickets/${nestedValue}`}
-        //   color="teal.100"
-        //   target="_blank"
-        //   rel="noopener noreferrer"
-        // >
-        //   Click here
-        // </Link>
-      );
-    }
+    // if (column.type === "link") {
+    //   const link = `${process.env.NEXT_PUBLIC_DOMAIN}/purchase/tickets/${nestedValue}`;
+    //   return (
+    //     <Button
+    //       rightIcon={<MdContentCopy />}
+    //       onClick={() => {
+    //         navigator.clipboard.writeText(link);
+    //         toast.success("Link copied to clipboard!");
+    //       }}
+    //     >
+    //       Copy the Link
+    //     </Button>
+    //     // <Link
+    //     //   as={"a"}
+    //     //   href={`/purchase/tickets/${nestedValue}`}
+    //     //   color="teal.100"
+    //     //   target="_blank"
+    //     //   rel="noopener noreferrer"
+    //     // >
+    //     //   Click here
+    //     // </Link>
+    //   );
+    // }
 
     return getValue(item, column);
   };
